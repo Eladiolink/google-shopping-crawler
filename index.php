@@ -17,8 +17,4 @@ $html = $buscador->search(" nintendo switch ");
 
 $crawler = new CrawlerItens( );
 
-echo "<pre>";
-   var_dump($crawler->getItens( $html));
-echo "<pre/>";
-
-
+print_r($crawler->getItens( $html));
