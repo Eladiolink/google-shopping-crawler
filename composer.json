@@ -1,0 +1,16 @@
+{
+    "name": "eladiolink/crawler",
+    "description": "Um simples crawler de buscas de pre\u0000o",
+    "type": "no",
+    "require": {
+        "symfony/browser-kit": "^5.3",
+        "symfony/http-client": "^5.3",
+        "symfony/dom-crawler": "^5.3",
+        "symfony/css-selector": "^5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Eladiolink\\Crawler\\":"src/"
+        }
+    }
+}
