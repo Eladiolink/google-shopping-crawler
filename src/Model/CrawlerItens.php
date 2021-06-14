@@ -28,4 +28,29 @@ class CrawlerItens
 
         return $array;
     }
+
+    public function getItensArray(string $html): array
+    {
+        $this->crawler->addHtmlContent($html);
+        $elementosTitle = $this->crawler->filter("div.rgHvZc");
+        $elementosPrice = $this->crawler->filter("span.HRLxBb");
+        
+        $array=[];
+
+        if(sizeof( $elementosTitle) != 0 && sizeof($elementosTitle) ==  sizeof($elementosPrice) ) {
+            foreach($elementosTitle as $index => $elementoTitle){
+                $array[$index]=[
+                    "title" => $elementoTitle->textContent
+                    ];
+                }
+
+            foreach($elementosPrice as $index => $elementoPrice){
+                $array[$index]+=[
+                    "price" => $elementoPrice->textContent
+                    ];
+            }
+         }
+
+        return $array;
+    }
 }
