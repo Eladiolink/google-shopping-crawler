@@ -20,7 +20,6 @@ class CrawlerItens
         $elementosCurso = $this->crawler->filter("div.xcR77");
         $array=[];
         if(sizeof($elementosCurso)!=0){
-
            foreach($elementosCurso as $elemento){
               array_push($array, $elemento->textContent);
             }
@@ -28,29 +27,19 @@ class CrawlerItens
 
         return $array;
     }
-
+    
     public function getItensArray(string $html): array
     {
         $this->crawler->addHtmlContent($html);
-        $elementosTitle = $this->crawler->filter("div.rgHvZc");
-        $elementosPrice = $this->crawler->filter("span.HRLxBb");
+        $elementosTitle = iterator_to_array($this->crawler->filter("div.rgHvZc")->getIterator());
+        $elementosPrice = iterator_to_array($this->crawler->filter("span.HRLxBb")->getIterator());
         
-        $array=[];
-
-        if(sizeof( $elementosTitle) != 0 && sizeof($elementosTitle) ==  sizeof($elementosPrice) ) {
-            foreach($elementosTitle as $index => $elementoTitle){
-                $array[$index]=[
-                    "title" => $elementoTitle->textContent
-                    ];
-                }
-
-            foreach($elementosPrice as $index => $elementoPrice){
-                $array[$index]+=[
-                    "price" => $elementoPrice->textContent
-                    ];
-            }
-         }
-
+        $array=array_map(function($a,$b){
+            return array(
+                'title'=>$a->textContent,
+                'price'=>$b->textContent
+            );
+        },$elementosTitle,$elementosPrice);
         return $array;
     }
 }
