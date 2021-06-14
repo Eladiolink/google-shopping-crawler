@@ -13,17 +13,18 @@ $buscador = new Buscador($browser);
 
 $buscador->request('GET','https://www.google.com');
 
-$html = $buscador->search("Processador Ryzen 5 3600");
+$html = $buscador->search("AJKAJSKAJSAKS");
 
 $crawler = new CrawlerItens( );
 
 $value = $crawler->getItensArray($html);
+echo "<pre>";
+print_r($value);
+echo "</pre>";
 
-//print_r($value);
-
-foreach($value as $item){
-   if(strtolower($item['title']) == "processador ryzen 5 3600 amd am4") {
-      echo "{$item['title']} - {$item['price']}".PHP_EOL;
-    } 
-}
+// foreach($value as $item){
+//    if(strtolower($item['title']) == "processador ryzen 5 3600 amd am4") {
+//       echo "{$item['title']} - {$item['price']}".PHP_EOL;
+//     } 
+// }
 
