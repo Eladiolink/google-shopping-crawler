@@ -4,6 +4,7 @@ namespace Eladiolink\Crawler\Model;
 
 use Symfony\Component\DomCrawler\Crawler;
 
+use function PHPSTORM_META\map;
 
 class CrawlerItens 
 {
@@ -36,7 +37,7 @@ class CrawlerItens
         $elementosPrice = $this->crawler->filter("span.HRLxBb");
         
         $array=[];
-
+        
         if(sizeof( $elementosTitle) != 0 && sizeof($elementosTitle) ==  sizeof($elementosPrice) ) {
             foreach($elementosTitle as $index => $elementoTitle){
                 $array[$index]=[
