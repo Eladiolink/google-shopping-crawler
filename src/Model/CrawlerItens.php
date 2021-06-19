@@ -34,9 +34,16 @@ class CrawlerItens
         $this->crawler->addHtmlContent($html);
         $elementosTitle = iterator_to_array($this->crawler->filter("div.rgHvZc")->getIterator());
         $elementosPrice = iterator_to_array($this->crawler->filter("span.HRLxBb")->getIterator());
-        
+        $elementosLink = $this->crawler->filter("div.rgHvZc > a");
         $array=[];
         
+        // echo sizeof($elementosLink);
+        foreach ( $elementosLink as $test) {
+
+            // echo $test->textContent();
+
+        }
+
         if(sizeof( $elementosTitle) != 0 && sizeof($elementosTitle) ==  sizeof($elementosPrice) ) {
             foreach($elementosTitle as $index => $elementoTitle){
                 $array[$index]=[

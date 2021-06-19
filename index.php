@@ -13,29 +13,29 @@ $buscador = new Buscador($browser);
 
 $buscador->request('GET','https://www.google.com');
 
-<<<<<<< HEAD
-$html = $buscador->search("Nintendo Switch");
-=======
-$html = $buscador->search("AJKAJSKAJSAKS");
->>>>>>> 24e0e1734ce30e9d07872a90738fa10f5f58fe68
+$html = $buscador->search("RTX 3090");
 
 $crawler = new CrawlerItens( );
 
 $value = $crawler->getItensArray($html);
-<<<<<<< HEAD
-//print_r($crawler->getItens($html));
-//print_r($value);
 
+$patern2='/'."Processador".'/';
+$patern='/'."Ryzen 5 2400".'/';
+$notpater='/'."null".'/';
 
-=======
+$list = array_filter($value, function($iten) use ($patern , $patern2, $notpater) {
+    if( preg_match($patern2, $iten['title']) && preg_match($patern, $iten['title']) && !preg_match($notpater, $iten['title']) ) {
+        return  $iten;
+      }
+
+});
+
+printf("Hello World");
+
 echo "<pre>";
-print_r($value);
-echo "</pre>";
+    print_r($value);
+echo "<pre/>";
 
-// foreach($value as $item){
-//    if(strtolower($item['title']) == "processador ryzen 5 3600 amd am4") {
-//       echo "{$item['title']} - {$item['price']}".PHP_EOL;
-//     } 
-// }
->>>>>>> 24e0e1734ce30e9d07872a90738fa10f5f58fe68
+echo $html;
 
+  //  print_r($list);
